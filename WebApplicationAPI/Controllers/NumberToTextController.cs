@@ -27,7 +27,7 @@ namespace WebApplicationAPI.Controllers
         public NumberToText Get(double id)
         {
             _logger.LogInformation(message: $"Number = {id}");
-            var text = _myConverter.ConvertToWords(id);
+            var text = _myConverter.ConvertToWords(id)+ " Dollars";
             return new NumberToText()
             {
                 NumberInText = text,

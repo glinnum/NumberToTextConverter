@@ -13,13 +13,14 @@ namespace WebApplicationAPITests.Controllers
         private NumberToTextController _NumberToTextController;
         private Mock<ILogger<NumberToTextController>> _mockLogger;
         private Mock<IMyConverter> _mockMyConverter;
+        private IMyConverter _MyConverter;
 
         public NumberToTextControllerBuilder()
         {
         }
                 public NumberToTextControllerBuilder Default()
         {
-            _mockMyConverter = new Mock<IMyConverter>();
+            _MyConverter = new MyConverter();
             _mockLogger = new Mock<ILogger<NumberToTextController>>();
             return this;
         }
@@ -40,7 +41,7 @@ namespace WebApplicationAPITests.Controllers
         {
             _NumberToTextController = new NumberToTextController(
             _mockLogger.Object,
-            _mockMyConverter.Object);
+            _MyConverter);
             return _NumberToTextController;
         }
     }
