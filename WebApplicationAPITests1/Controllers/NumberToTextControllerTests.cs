@@ -11,12 +11,48 @@ namespace WebApplicationAPI.Controllers.Tests
     public class NumberToTextControllerTests
     {
         [TestMethod()]
-        public void Get1ReturnsOne()
+        public void Get1_01ReturnsOneDollerAndOneCent()
+        {
+            NumberToTextController control = new NumberToTextControllerBuilder().Default().Build();
+            var result = control.Get(1.01d);
+            Assert.AreEqual("one Dollar and one Cent", result.NumberInText);
+            Assert.AreEqual(1.01d, result.Number);
+        }
+
+        [TestMethod()]
+        public void Get1_02ReturnsOneDollerAndTwoCents()
+        {
+            NumberToTextController control = new NumberToTextControllerBuilder().Default().Build();
+            var result = control.Get(1.02d);
+            Assert.AreEqual("one Dollar and two Cents", result.NumberInText);
+            Assert.AreEqual(1.02d, result.Number);
+        }
+
+        [TestMethod()]
+        public void Get1_029ReturnsOneDollerAndTwoCents()
+        {
+            NumberToTextController control = new NumberToTextControllerBuilder().Default().Build();
+            var result = control.Get(1.029d);
+            Assert.AreEqual("one Dollar and two Cents", result.NumberInText);
+            Assert.AreEqual(1.029d, result.Number);
+        }
+
+        [TestMethod()]
+        public void Get1ReturnsOneDoller()
         {
             NumberToTextController control = new NumberToTextControllerBuilder().Default().Build();
             var result = control.Get(1);
-            Assert.AreEqual("one Dollars", result.NumberInText);
+            Assert.AreEqual("one Dollar and zero Cents", result.NumberInText);
             Assert.AreEqual(1, result.Number);
+        }
+
+        [TestMethod()]
+        public void Get2ReturnsTwoDollers()
+        {
+            NumberToTextController control = new NumberToTextControllerBuilder().Default().Build();
+            var result = control.Get(2);
+            Assert.AreEqual("two Dollars and zero Cents", result.NumberInText);
+            Assert.AreEqual(2, result.Number);
         }
 
         [TestMethod()]
@@ -24,7 +60,7 @@ namespace WebApplicationAPI.Controllers.Tests
         {
             NumberToTextController control = new NumberToTextControllerBuilder().Default().Build();
             var result = control.Get(10);
-            Assert.AreEqual("ten Dollars", result.NumberInText);
+            Assert.AreEqual("ten Dollars and zero Cents", result.NumberInText);
             Assert.AreEqual(10, result.Number);
         }
     }

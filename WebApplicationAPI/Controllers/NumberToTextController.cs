@@ -16,23 +16,44 @@ namespace WebApplicationAPI.Controllers
         private readonly ILogger<NumberToTextController> _logger;
 
         public NumberToTextController(
-            ILogger<NumberToTextController> logger, 
+            ILogger<NumberToTextController> logger,
             IMyConverter myConverter)
         {
             _logger = logger;
             _myConverter = myConverter;
         }
 
-        [HttpGet("{id}")]
-        public NumberToText Get(double id)
+        [HttpGet("{amount}")]
+        public NumberToText Get(double amount)
         {
-            _logger.LogInformation(message: $"Number = {id}");
-            var text = _myConverter.ConvertToWords(id)+ " Dollars";
+            _logger.LogInformation(message: $"Number = {amount}");
+
+            var dollers = Math.Floor(amount);
+            var cents = (int)(((decimal)amount % 1) * 100);
+            string text = GetDollers(dollers) + " and " + GetCents(cents);
+
             return new NumberToText()
             {
                 NumberInText = text,
-                Number = id
+                Number = amount
             };
+
+        }
+        string GetDollers(double id)
+        {
+            var dollerText = " Dollars";
+            if (id==1)
+                dollerText = " Dollar";
+
+            return _myConverter.ConvertToWords(id) + dollerText;
+        }
+        string GetCents(double id)
+        {
+            var centText = " Cents";
+            if (id == 1)
+                centText = " Cent";
+
+            return _myConverter.ConvertToWords(id) + centText;
         }
     }
 }
