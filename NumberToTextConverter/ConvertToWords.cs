@@ -6,7 +6,7 @@ namespace NumberToTextConverter
     {
         // A function that prints 
         // given number in words 
-        private string Convert_to_words(char[] num)
+        private static string Convert_to_words(char[] num)
         {
             string returnString = string.Empty;
             // Get number of digits 
