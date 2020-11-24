@@ -1,12 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WebApplicationAPI.Controllers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WebApplicationAPITests.Controllers;
-using Moq;
-using Castle.Core.Logging;
-using Microsoft.Extensions.Logging;
 
 namespace WebApplicationAPI.Controllers.Tests
 {

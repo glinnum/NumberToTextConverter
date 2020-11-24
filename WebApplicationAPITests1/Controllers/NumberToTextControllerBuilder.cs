@@ -1,9 +1,5 @@
 ﻿using NumberToTextConverter;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using WebApplicationAPI.Controllers;
-using Moq;
 
 namespace WebApplicationAPITests.Controllers
 {

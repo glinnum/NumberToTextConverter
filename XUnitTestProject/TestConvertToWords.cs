@@ -1,8 +1,5 @@
-using Moq;
 using NumberToTextConverter;
-using System;
 using Xunit;
-using XUnitTestProject;
 
 namespace XUnitTestProject
 {
