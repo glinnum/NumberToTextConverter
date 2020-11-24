@@ -119,8 +119,10 @@ namespace NumberToTextConverter
             return returnString;
         }
 
-        public string ConvertToWords(double digit)
+        public string ConvertToWords(double? digit)
         {
+            if (digit==null || double.IsNaN((double)digit))
+                return Convert_to_words(string.Empty.ToCharArray());
             return Convert_to_words(digit.ToString().ToCharArray());
         }
     }

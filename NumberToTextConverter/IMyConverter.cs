@@ -2,6 +2,6 @@
 {
     public interface IMyConverter
     {
-        string ConvertToWords(double digit);
+        string ConvertToWords(double? digit);
     }
 }

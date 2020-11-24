@@ -9,6 +9,20 @@ namespace XUnitTestProject
     public class TestConvertToWords
     {
         [Fact]
+        public void CheckNull_ReturnsEmptyString()
+        {
+            var _MyConverter = new MyConverter();
+            Assert.Equal("empty string", _MyConverter.ConvertToWords(null));
+        }
+
+        [Fact]
+        public void CheckNotANumber()
+        {
+            var _MyConverter = new MyConverter();
+            Assert.Equal("empty string", _MyConverter.ConvertToWords(double.NaN));
+        }
+
+        [Fact]
         public void CheckMinus1()
         {
             var _MyConverter = new MyConverter();
@@ -167,5 +181,8 @@ namespace XUnitTestProject
             Assert.Equal("one thousand twenty", _MyConverter.ConvertToWords(1020));
             Assert.Equal("one thousand twenty one", _MyConverter.ConvertToWords(1021));
         }
+
+        //million 
+        //billion 
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using NumberToTextConverter;
 
 namespace WebApplicationAPI.Controllers
@@ -13,21 +12,16 @@ namespace WebApplicationAPI.Controllers
     public class NumberToTextController : ControllerBase
     {
         private readonly IMyConverter _myConverter;
-        private readonly ILogger<NumberToTextController> _logger;
 
         public NumberToTextController(
-            ILogger<NumberToTextController> logger,
             IMyConverter myConverter)
         {
-            _logger = logger;
             _myConverter = myConverter;
         }
 
         [HttpGet("{amount}")]
         public NumberToText Get(double amount)
         {
-            _logger.LogInformation(message: $"Number = {amount}");
-
             var dollers = Math.Floor(amount);
             var cents = (int)(((decimal)amount % 1) * 100);
             string text = GetDollers(dollers) + " and " + GetCents(cents);
